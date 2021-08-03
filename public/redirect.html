@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="refresh" content="3600;url=/public/index.html" />
+  <title>Document</title>
+  <style>
+    @keyframes dotdotdotTextAnimation{
+      0%{
+        content: "";
+      }
+      10% {
+        content: ".";
+      }
+      40% {
+        content: "..";
+      }
+      70% {
+        content: "...";
+      }
+    }
+    .dotdotdot {
+      font-size: 24px;
+    }
+    .dotdotdot:after {
+      -webkit-animation: dotdotdotTextAnimation 2s linear infinite ;
+              animation: dotdotdotTextAnimation 2s linear infinite ;
+      content: "";
+    }
+    body{margin: 0px auto;width: 100vw;height: 100vh;overflow: hidden;}
+    p{
+      position: absolute;
+      top:10px;
+      left:10px;
+    }
+  </style>
+  <script>
+    var dirx = 1, diry = 1;
+    let count = 3599;
+    window.onload = function(){
+      setInterval(() => {
+        document.querySelector("span").innerHTML = `${count--}`;
+      },1000);
+      setInterval( () => {
+        let p = document.querySelector("p");
+        let x = parseInt( p.style.left || 0 ), 
+            y = parseInt( p.style.top || 0 )
+        p.style.top = ( y + diry) + "px";
+        p.style.left = (x + dirx) + "px";
+        if( x + 96 > window.innerWidth  )
+          dirx = -1
+        else if( x < 0 )
+          dirx = 1;
+        if( y + 32 > window.innerHeight )
+          diry = -1;
+        else if( y < 0 )
+          diry = 2;
+      }, 1);
+    }
+  </script>
+</head>
+<body>
+  <p>Redirecting<i class="dotdotdot"></i></p>
+  <span></span>
+</body>
+</html>

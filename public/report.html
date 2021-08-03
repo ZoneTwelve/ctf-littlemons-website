@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Report 2 admin</title>
+  <script>
+    window.onload = function(){
+      document.form.url.placeholder = `${location.origin}/public/theme.html?style=/public/src/css/default.css`;
+      document.form.onsubmit = checkData;
+    }
+    function checkData( ){
+      try{
+        let url = new URL(this.url.value);
+        console.log( url );
+        if( url.origin == location.origin )
+          return true;
+      }catch(e){return false;}
+      return false;
+    }
+  </script>
+</head>
+<body>
+  <h1>Report to admin</h1>
+  <p>Where is the bug</p>
+  <small>I ganna kill them all</small>
+  <form action="/report" method="get" onsubmit="return false;" name="form">
+    <input type="url" name="url">
+    <button type="submit">回報</button>
+  </form>
+</body>
+</html>

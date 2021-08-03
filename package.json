@@ -1,0 +1,14 @@
+{
+  "name": "css-ctf",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node 8978f5d85a00b0e2b37319839b266ea1.js"
+  },
+  "author": "ZoneTwelve",
+  "license": "MPL-2.0",
+  "dependencies": {
+    "puppeteer": "^10.1.0"
+  }
+}
